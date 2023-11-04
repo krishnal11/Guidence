@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student Guidence Hub</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Guidence Form</header>
+      <form action="#" class="form">
+        <!-- ... (your existing code) ... -->
+        <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter full name" required />
+          </div>
+        <div class="input-box">
+          <label>branch</label>
+          <select id="branch" required>
+            <option value="" hidden>Select Branch</option>
+            <option value="CS">Computer Science</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="CIVIL">Civil</option>
+            <option value="ENTC">ENTC</option>
+            <!-- Add more branch options as needed -->
+          </select>
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <label>year</label>
+            <select id="year" required>
+              <option value="" hidden>Select Year</option>
+              <option value="2">1st Year</option>
+              <!-- Add more year options as needed -->
+            </select>
+          </div>
+          <div class="input-box">
+            <label>Birth Date</label>
+            <input type="date" placeholder="Enter birth date" required />
+          </div>
+        </div>
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box address">
+          <label>Interested Field</label>
+          <input type="text" placeholder="Enter Interested Field" required />
+          <!-- <input type="text" placeholder="Enter street address line 2" required /> -->
+        </div>
+        <div class = "input-box address">
+          <label>Enter your Speaking Languages</label>
+          <input type="text" placeholder="Enter Speaking Languages" required />
+          <label>Enter your Coding Languages</label>
+          <input type="text" placeholder="Enter Coding Languages" required />
+        </div>
+        <button id="submit-button">Submit</button>
+      </form>
+    </section>
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function (event) {
+          event.preventDefault();
+          const branch = document.getElementById("branch").value;
+          const year = document.getElementById("year").value;
+      
+          const cs2ndYearLink = 'https://docs.google.com/document/d/1F02-33TcdohkuAK1ruhDpErrixbyYCfn/edit?usp=sharing&ouid=107841162963020391335&rtpof=true&sd=true';
+          const mechanical3rdYearLink = 'https://docs.google.com/document/d/1cb7_gnr2cA2Y2hLms7nKCWE8A-mYVi9U/edit?usp=sharing&ouid=107841162963020391335&rtpof=true&sd=true';
+          const civil1stLink = 'https://docs.google.com/document/d/1eq6YYLEsq8HOVWRyr2llYbUtJvrFThyz/edit?usp=sharing&ouid=107841162963020391335&rtpof=true&sd=true';
+          const ENTC1stLink = 'https://docs.google.com/document/d/1sFuixd6zRitrKg2sL1OiDOWIB-3BNol8/edit?usp=sharing&ouid=107841162963020391335&rtpof=true&sd=true';
+    
+          function downloadDocument(link) {
+            const anchor = document.createElement('a');
+            anchor.style.display = 'none';
+            anchor.href = link;
+            anchor.download = link.split('/').pop(); 
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+          }
+      
+
+          if (branch === "CS") {
+        
+            downloadDocument(cs2ndYearLink);
+          } else if (branch === "Mechanical") {
+            
+            downloadDocument(mechanical3rdYearLink);
+          } else if (branch == "CIVIL") {
+            downloadDocument(civil1stLink)
+
+          } else if (branch == "ENTC") {
+            downloadDocument(civil1stLink)
+
+          } else {
+         
+            alert("Please select a valid branch and year combination.");
+          }
+        });
+      </script>
+  </body>
+</html>
